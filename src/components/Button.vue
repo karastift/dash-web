@@ -1,15 +1,18 @@
-<script setup lang="ts">
-defineProps({
-  title: String,
-  color: String,
-  height: String || undefined,
-  width: String || undefined,
-})
-</script>
-
 <template>
   <button :style="{ backgroundColor: color, width: width, height: height }">{{ title }}</button>
 </template>
+
+<script lang="ts">
+export default {
+  name: 'Button',
+  props: {
+    title: String,
+    color: String,
+    height: String,
+    width: String,
+  },
+}
+</script>
 
 <style scoped>
 

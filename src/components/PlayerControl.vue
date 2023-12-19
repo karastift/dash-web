@@ -1,7 +1,3 @@
-<script setup lang="ts">
-import Button from './Button.vue';
-</script>
-
 <template>
   <div class="box">
     <Button title="&lt;"></Button>
@@ -10,8 +6,11 @@ import Button from './Button.vue';
   </div>
 </template>
 
-<style scoped>
+<script setup lang="ts">
+import Button from './Button.vue';
+</script>
 
+<style scoped>
 .box {
   display: flex;
   text-align: center;

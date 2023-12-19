@@ -1,19 +1,8 @@
-<script setup lang="ts">
-import Rpm from '../components/Rpm.vue';
-import Speed from '../components/Speed.vue'
-import PlayerControl from '../components/PlayerControl.vue'
-import Song from '../components/Song.vue'
-import VolumeControl from '../components/VolumeControl.vue'
-import BluetoothControl from '../components/BluetoothControl.vue'
-import PowerButton from '../components/PowerButton.vue'
-import Space from '../components/Space.vue'
-</script>
-
 <template>
   <main>
     <div class="vehicleInfo">
-      <Speed />
-      <Rpm />
+      <Gauge description="km/h" :data="kmh.toString()" />
+      <Gauge description="rpm" :data="rpm.toString()" />
     </div>
     <Space />
 
@@ -26,7 +15,7 @@ import Space from '../components/Space.vue'
 
       <div class="player">
         <PlayerControl />
-        <Song />
+        <Song :interpret="song.interpret" :title="song.title"/>
       </div>
 
       <VolumeControl class="volume"/>
@@ -35,8 +24,68 @@ import Space from '../components/Space.vue'
   </main>
 </template>
 
-<style scoped>
+<script lang="ts">
+import io from 'socket.io-client';
 
+import Gauge from '../components/Gauge.vue';
+import PlayerControl from '../components/PlayerControl.vue'
+import Song from '../components/Song.vue'
+import VolumeControl from '../components/VolumeControl.vue'
+import BluetoothControl from '../components/BluetoothControl.vue'
+import PowerButton from '../components/PowerButton.vue'
+import Space from '../components/Space.vue'
+
+export default {
+  name: 'HomeView',
+  data() {
+    return {
+      kmh: 0,
+      rpm: 0,
+      connection: null as any,
+      song: {
+        title: '',
+        interpret: '',
+      },
+      isPlaying: false,
+    }
+  },
+  created() {
+    console.log('Trying to connect to websocket server');
+    
+    this.connection = io.connect('http://localhost:3333');
+
+    if (this.connection === null) return;
+
+    this.connection.on('dashboard_update', (message: string) => {
+      const data = JSON.parse(message);
+
+      this.kmh = data.kmh
+      this.rpm = data.rpm
+    });
+
+    this.connection.on('player_update', (message: string) => {
+      const data = JSON.parse(message);
+
+      this.song.title = data.song.title;
+      this.song.interpret = data.song.interpet;
+
+      // playButton.innerText = '⏸' ? data.isPlaying : '▶'
+    });
+  },
+  components: {
+    Gauge,
+    PlayerControl,
+    Song,
+    VolumeControl,
+    BluetoothControl,
+    PowerButton,
+    Space,
+  },
+}
+
+</script>
+
+<style scoped>
 main {
   display: flex;
   flex-direction: column;
