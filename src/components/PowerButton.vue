@@ -1,11 +1,24 @@
 <template>
   <div class="box">
-    <Button title="o" color="red" height="40px"/>
+    <Button title="o" color="red" height="40px" :onClick="powerOff"/>
   </div>
 </template>
 
-<script setup lang="ts">
+<script lang="ts">
 import Button from './Button.vue';
+import { shutdown } from '@/helpers/api';
+
+export default {
+  name: "PowerButton",
+  methods: {
+    powerOff() {
+      shutdown();
+    },
+  },
+  components: {
+    Button,
+  },
+}
 </script>
 
 <style scoped>

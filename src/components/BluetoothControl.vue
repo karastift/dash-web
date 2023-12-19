@@ -5,8 +5,24 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script lang="ts">
 import Button from './Button.vue';
+import { setPairable } from '@/helpers/api';
+
+export default {
+  name: "BluetoothControl",
+  methods: {
+    pair() {
+      setPairable(true);
+    },
+    noPair() {
+      setPairable(false);
+    },
+  },
+  components: {
+    Button,
+  },
+}
 </script>
 
 <style scoped>

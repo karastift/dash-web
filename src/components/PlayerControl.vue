@@ -6,8 +6,27 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script lang="ts">
 import Button from './Button.vue';
+import { back, forward, togglePlay } from '@/helpers/api';
+
+export default {
+  name: "BluetoothControl",
+  methods: {
+    nextSong() {
+      forward().then((song) => this.$emit('song-changed', song));
+    },
+    previousSong() {
+      back().then((song) => this.$emit('song-changed', song));
+    },
+    playPause() {
+      togglePlay().then((song) => this.$emit('song-changed', song));
+    },
+  },
+  components: {
+    Button,
+  },
+}
 </script>
 
 <style scoped>

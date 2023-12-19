@@ -14,7 +14,7 @@
       </div>
 
       <div class="player">
-        <PlayerControl />
+        <PlayerControl @song-changed="handleSongChangedBySongControl" />
         <Song :interpret="song.interpret" :title="song.title"/>
       </div>
 
@@ -45,9 +45,14 @@ export default {
       song: {
         title: '',
         interpret: '',
+        isPlaying: false,
       },
-      isPlaying: false,
     }
+  },
+  methods: {
+    handleSongChangedBySongControl(song: any) {
+      this.song = song;
+    },
   },
   created() {
     console.log('Trying to connect to websocket server');
