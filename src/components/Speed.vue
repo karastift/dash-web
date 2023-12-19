@@ -3,7 +3,7 @@
 
 <template>
   <div class="box">
-    <div>120</div>
+    <div class="number">120</div>
     <div>km/h</div>
   </div>
 </template>
@@ -14,5 +14,9 @@
   border: 1px solid black;
   width: 100px;
   text-align: center;
+}
+.number {
+  font-size: x-large;
+  margin-bottom: 5px;
 }
 </style>

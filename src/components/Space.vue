@@ -3,7 +3,7 @@
 
 <template>
   <div class="box">
-    <div>This is a lot of space.</div>
+    <img src="@/assets/nyancat.gif" alt="nyancat" height="100px">
   </div>
 </template>
 

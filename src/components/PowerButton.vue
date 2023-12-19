@@ -1,9 +1,10 @@
 <script setup lang="ts">
+import Button from './Button.vue';
 </script>
 
 <template>
   <div class="box">
-    <button>o</button>
+    <Button title="o" color="red" height="40px"/>
   </div>
 </template>
 

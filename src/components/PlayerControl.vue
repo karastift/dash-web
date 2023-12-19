@@ -1,19 +1,22 @@
 <script setup lang="ts">
+import Button from './Button.vue';
 </script>
 
 <template>
   <div class="box">
-    <button type="button">&lt;</button>
-    <button type="button">||</button>
-    <button type="button">&gt;</button>
+    <Button title="&lt;"></Button>
+    <Button title="||"></Button>
+    <Button title="&gt;"></Button>
   </div>
 </template>
 
 <style scoped>
 
 .box {
-  border: 1px solid black;
-  width: 100px;
+  display: flex;
   text-align: center;
+  width: 50%;
+  flex-direction: row;
+  margin-bottom: 10px;
 }
 </style>

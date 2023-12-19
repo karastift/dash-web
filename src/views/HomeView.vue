@@ -41,13 +41,16 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  font-family: 'Press Start 2P', cursive;
+  font-size: x-small;
+  color: var(--text);
+  background-color: var(--background);
 }
 
 .vehicleInfo {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  border: 1px solid green;
   margin-top: 200px;
 }
 
@@ -59,7 +62,6 @@ main {
 .player, .volume, .deviceControl {
   flex: 1;
   width: 100%;
-  border: 2px solid red;
 }
 
 .player {
