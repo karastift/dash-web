@@ -1,8 +1,8 @@
 <template>
   <div class="box">
-    <Button title="&lt;"></Button>
-    <Button title="||"></Button>
-    <Button title="&gt;"></Button>
+    <Button title="&lt;" :onClick="previousSong"></Button>
+    <Button title="||" :onClick="playPause"></Button>
+    <Button title="&gt;" :onClick="nextSong"></Button>
   </div>
 </template>
 

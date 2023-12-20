@@ -1,7 +1,7 @@
 <template>
   <div class="box">
-    <Button title="pair" height="40px"/>
-    <Button title="no pair" height="40px"/>
+    <Button title="pair" height="40px" :onClick="pair"/>
+    <Button title="no pair" height="40px" :onClick="noPair"/>
   </div>
 </template>
 
