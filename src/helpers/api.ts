@@ -1,4 +1,4 @@
-const BACKEND_BASE_URL = 'http://localhost:3333';
+const BACKEND_BASE_URL = 'http://host.docker.internal:3333';
 
 export interface Song {
     title: string;
