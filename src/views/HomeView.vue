@@ -57,7 +57,10 @@ export default {
   created() {
     console.log('Trying to connect to websocket server');
     
-    this.connection = io.connect('http://localhost:3333');
+    // workaround for typescript problem
+    const ioModule: any = io;
+
+    this.connection = ioModule.connect('http://localhost:3333');
 
     if (this.connection === null) return;
 
