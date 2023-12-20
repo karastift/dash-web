@@ -1,8 +1,8 @@
 <template>
   <main>
     <div class="vehicleInfo">
-      <Gauge description="km/h" :data="kmh.toString()" />
-      <Gauge description="rpm" :data="rpm.toString()" />
+      <Gauge description="km/h" :data="kmh" :max="200" />
+      <Gauge description="rpm" :data="rpm" :max="6000" />
     </div>
     <Space />
 
