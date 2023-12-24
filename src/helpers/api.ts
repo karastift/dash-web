@@ -26,7 +26,7 @@ export const sendRequest = async (url: string, data: any): Promise<any> => {
     if (!response.ok) {
         throw new Error(`Request failed with status ${response.status}`);
     }
-    return await response.json();
+    return (await response).json();
 };
 
 export const shutdown = async () => {
@@ -35,24 +35,25 @@ export const shutdown = async () => {
 
 export const setPairable = async (status: boolean) => {
     sendRequest(BACKEND_BASE_URL + '/bluetooth/pairable', { status });
+    sendRequest(BACKEND_BASE_URL + '/bluetooth/discoverable', { status });
 };
 
 export const togglePlay = async (): Promise<Song> => {
-    const res = await sendRequest(BACKEND_BASE_URL + '/player/player_pause', undefined);
+    const res = await sendRequest(BACKEND_BASE_URL + '/player/play_pause', undefined);
 
-    return JSON.parse(res);
+    return res;
 };
 
 export const forward = async (): Promise<Song> => {
     const res = await sendRequest(BACKEND_BASE_URL + '/player/forward', undefined);
 
-    return JSON.parse(res);
+    return res;
 };
 
 export const back = async (): Promise<Song> => {
     const res = await sendRequest(BACKEND_BASE_URL + '/player/back', undefined);
 
-    return JSON.parse(res);
+    return res;
 };
 
 export const volumeTo = async (percentage: number) => {

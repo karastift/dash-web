@@ -14,7 +14,7 @@
       </div>
 
       <div class="player">
-        <PlayerControl @song-changed="handleSongChangedBySongControl" />
+        <PlayerControl :isPlaying="song.isPlaying" @song-changed="handleSongChangedBySongControl" />
         <Song :interpret="song.interpret" :title="song.title"/>
       </div>
 
@@ -46,6 +46,8 @@ export default {
         title: '',
         interpret: '',
         isPlaying: false,
+        length: 0,
+        volume: 0.5,
       },
     }
   },
@@ -72,12 +74,12 @@ export default {
     });
 
     this.connection.on('player_update', (message: string) => {
-      const data = JSON.parse(message);
+      const songUpdate = JSON.parse(message);
 
-      this.song.title = data.song.title;
-      this.song.interpret = data.song.interpet;
+      this.song = songUpdate
 
-      // playButton.innerText = '⏸' ? data.isPlaying : '▶'
+      console.log(this.song)
+      console.log(songUpdate)
     });
   },
   components: {
