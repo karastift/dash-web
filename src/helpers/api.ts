@@ -7,6 +7,11 @@ export interface Song {
     isPlaying: string;
 };
 
+export interface Device {
+    name: string;
+    macAddress: string;
+};
+
 export const sendRequest = async (url: string, data: any): Promise<any> => {
 
     // javascript object -> urlencoded data
@@ -58,4 +63,24 @@ export const back = async (): Promise<Song> => {
 
 export const volumeTo = async (percentage: number) => {
     const res = await sendRequest(BACKEND_BASE_URL + '/player/volume_to', { percentage });
+};
+
+export const listDevices = async (): Promise<Device[]> => {
+    const res = await sendRequest(BACKEND_BASE_URL + '/bluetooth/list_devices', undefined);
+
+    const devices = new Array<Device>();
+
+    // i have to change the name of the mac_address parameter to match the camelCase
+    for (let i = 0; i < res.length; i++) {
+        devices.push({
+            name: res[i].name,
+            macAddress: res[i].mac_address,
+        })
+    }
+
+    return devices;
+};
+
+export const removeDevice = async (macAddress: string) => {
+    const res = await sendRequest(BACKEND_BASE_URL + '/bluetooth/remove_device', { mac_address: macAddress });
 };

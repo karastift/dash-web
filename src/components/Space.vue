@@ -4,9 +4,9 @@
       <span>known devices:</span>
         <Button
           v-for="device in devices"
-          :title="device.name + ' - ' + device.mac"
+          :title="device.name + ' - ' + device.macAddress"
           fontSize="smaller"
-          :onClick="() => removeDevice(device.mac)"
+          :onClick="() => remove(device.macAddress)"
           class="device"
         />
     </div>
@@ -18,6 +18,7 @@
 </template>
 
 <script lang="ts">
+import { listDevices, removeDevice, type Device } from '@/helpers/api';
 import Button from './Button.vue';
 
 export default {
@@ -39,20 +40,25 @@ export default {
           'retro.gif',
           'vday.gif',
         ],
-        devices: [
-          { name: 'Handy', mac: '19:A5:C7:BD:E6:3B' },
-          { name: 'Samis IPhone', mac: '2B:A0:37:3B:C7:CA' },
-          { name: 'Bennos IPhone', mac: '49:92:50:71:18:F9' },
-        ]
+        devices: Array<Device>(),
       };
     },
     methods: {
       randomNyan() {
         return `nyan/${this.names[Math.floor(Math.random() * this.names.length)]}`;
       },
-      removeDevice(mac: string) {
-        console.log('I cant removeeeeeeeeeeeeee!!!!!!!!', mac)
+      fetchDevices() {
+        listDevices().then((fetchedDevices) => {
+          this.devices = fetchedDevices;
+        });
+      },
+      remove(mac: string) {
+        removeDevice(mac);
+        this.fetchDevices();
       }
+    },
+    created() {
+      this.fetchDevices();
     },
     components: { Button }
 };
