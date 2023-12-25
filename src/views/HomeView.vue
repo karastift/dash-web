@@ -4,7 +4,7 @@
       <Gauge description="km/h" :data="kmh" :max="200" />
       <Gauge description="rpm" :data="rpm" :max="6000" />
     </div>
-    <Space />
+    <Space :devices="devices" />
 
     <div class="footer">
 
@@ -49,6 +49,7 @@ export default {
         length: 0,
         volume: 0.5,
       },
+      devices: Array<Device>(),
     }
   },
   methods: {
@@ -76,10 +77,18 @@ export default {
     this.connection.on('player_update', (message: string) => {
       const songUpdate = JSON.parse(message);
 
-      this.song = songUpdate
+      // reset device list and add updated devices
+      // i have to to that in a for loop because on the server the property is named mac_address and here its macAddress
+      this.devices = [];
+      for (let device of songUpdate.devices) {
+      	this.devices.push({
+	  macAddress: device.mac_address,
+	  name: device.name,
+	});
+      }
 
-      console.log(this.song)
-      console.log(songUpdate)
+
+      this.song = songUpdate
     });
   },
   components: {

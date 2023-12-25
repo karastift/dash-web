@@ -23,6 +23,9 @@ import Button from './Button.vue';
 
 export default {
     name: 'Nyan',
+    props: {
+      devices: Array<Device>,
+    },
     data() {
       return {
         names: [
@@ -40,25 +43,15 @@ export default {
           'retro.gif',
           'vday.gif',
         ],
-        devices: Array<Device>(),
       };
     },
     methods: {
       randomNyan() {
         return `nyan/${this.names[Math.floor(Math.random() * this.names.length)]}`;
       },
-      fetchDevices() {
-        listDevices().then((fetchedDevices) => {
-          this.devices = fetchedDevices;
-        });
-      },
       remove(mac: string) {
         removeDevice(mac);
-        this.fetchDevices();
       }
-    },
-    created() {
-      this.fetchDevices();
     },
     components: { Button }
 };

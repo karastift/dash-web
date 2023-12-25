@@ -66,7 +66,9 @@ export const volumeTo = async (percentage: number) => {
 };
 
 export const listDevices = async (): Promise<Device[]> => {
-    const res = await sendRequest(BACKEND_BASE_URL + '/bluetooth/list_devices', undefined);
+    const res = await sendRequest(BACKEND_BASE_URL + '/bluetooth/devices', undefined);
+
+    console.log(res);
 
     const devices = new Array<Device>();
 
