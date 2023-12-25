@@ -1,5 +1,5 @@
 <template>
-  <button @click="handleClick" :style="{ backgroundColor: color, width: width, height: height }">{{ title }}</button>
+  <button @click="handleClick" :style="{ backgroundColor: color, width: width, height: height, fontSize: fontSize }">{{ title }}</button>
 </template>
 
 <script lang="ts">
@@ -10,6 +10,7 @@ export default {
     color: String,
     height: String,
     width: String,
+    fontSize: String,
     onClick: Function,
   },
   methods: {
