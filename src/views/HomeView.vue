@@ -34,6 +34,7 @@ import VolumeControl from '../components/VolumeControl.vue'
 import BluetoothControl from '../components/BluetoothControl.vue'
 import PowerButton from '../components/PowerButton.vue'
 import Space from '../components/Space.vue'
+import { type Device } from '@/helpers/api';
 
 export default {
   name: 'HomeView',

@@ -18,7 +18,7 @@
 </template>
 
 <script lang="ts">
-import { listDevices, removeDevice, type Device } from '@/helpers/api';
+import { removeDevice, type Device } from '@/helpers/api';
 import Button from './Button.vue';
 
 export default {
