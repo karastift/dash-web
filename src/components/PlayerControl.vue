@@ -23,7 +23,6 @@ export default {
       back().then((song) => this.$emit('song-changed', song));
     },
     playPause() {
-      this.isPlaying = !this.isPlaying;
       togglePlay().then((song) => this.$emit('song-changed', song));
     },
   },
