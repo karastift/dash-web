@@ -11,7 +11,7 @@
         />
     </div>
     <div class="content">
-      <img :src="randomNyan()" alt="nyancat" height="104px" width="236px">
+      <img :src="nyanPath" alt="nyancat" height="104px" width="236px">
     </div>
     <div class="content"></div>
   </div>
@@ -43,6 +43,7 @@ export default {
           'retro.gif',
           'vday.gif',
         ],
+        nyanPath: '',
       };
     },
     methods: {
@@ -53,7 +54,10 @@ export default {
         removeDevice(mac);
       }
     },
-    components: { Button }
+    created() {
+      this.nyanPath = this.randomNyan();
+    },
+    components: { Button },
 };
 </script>
 
