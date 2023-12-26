@@ -4,7 +4,14 @@
       <Gauge description="km/h" :data="kmh" :max="200" />
       <Gauge description="rpm" :data="rpm" :max="6000" />
     </div>
-    <Space :devices="devices" />
+
+    <div class="middle">
+      <Devices class="content" :devices="devices"/>
+      <div class="content">
+        <Nyan/>
+      </div>
+      <div class="content"></div>
+    </div>
 
     <div class="footer">
 
@@ -28,6 +35,8 @@
 import io from 'socket.io-client';
 
 import Gauge from '../components/Gauge.vue';
+import Devices from '../components/Devices.vue';
+import Nyan from '../components/Nyan.vue';
 import PlayerControl from '../components/PlayerControl.vue'
 import Song from '../components/Song.vue'
 import VolumeControl from '../components/VolumeControl.vue'
@@ -99,6 +108,8 @@ export default {
     BluetoothControl,
     PowerButton,
     Space,
+    Devices,
+    Nyan,
   },
 }
 
@@ -118,6 +129,20 @@ main {
   font-size: x-small;
   color: var(--text);
   background-color: var(--background);
+}
+
+.middle {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 200px;
+  width: 100%;
+  text-align: center;
+}
+
+.content {
+  width: 100%;
+  border: 1px solid white;
 }
 
 .vehicleInfo {
