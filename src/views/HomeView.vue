@@ -106,11 +106,16 @@ export default {
 </script>
 
 <style scoped>
+@font-face {
+    font-family: 'Press Start 2P';
+    src: url('font/PressStart2P-Regular.ttf');
+}
+
 main {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  font-family: 'Press Start 2P', cursive;
+  font-family: 'Press Start 2P';
   font-size: x-small;
   color: var(--text);
   background-color: var(--background);
