@@ -83,11 +83,10 @@ export default {
       this.devices = [];
       for (let device of songUpdate.devices) {
       	this.devices.push({
-	  macAddress: device.mac_address,
-	  name: device.name,
-	});
+          macAddress: device.mac_address,
+          name: device.name,
+	      });
       }
-
 
       this.song = songUpdate
     });
