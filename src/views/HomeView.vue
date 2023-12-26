@@ -107,8 +107,8 @@ export default {
 
 <style scoped>
 @font-face {
-    font-family: 'Press Start 2P';
-    src: url('font/PressStart2P-Regular.ttf');
+  font-family: 'Press Start 2P';
+  src: url('font/PressStart2P-Regular.ttf');
 }
 
 main {

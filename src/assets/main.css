@@ -1,8 +1,11 @@
 :root {
-    --text: white;
-    --background: black;
+  --text: white;
+  --background: black;
 }
 
 html {
-    background-color: var(--background);
+  background-color: var(--background);
+}
+body {
+  overflow: hidden; /* Hide scrollbars */
 }
