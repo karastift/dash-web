@@ -1,5 +1,5 @@
 <template>
-  <main>
+  <main :style="{ cursor: showCursor ? undefined : 'none' }">
     <div class="vehicleInfo">
       <Gauge description="km/h" :data="kmh" :max="200" />
       <Gauge description="rpm" :data="rpm" :max="6000" />
@@ -17,7 +17,7 @@
 
       <div class="deviceControl">
         <PowerButton />
-        <BluetoothControl />
+        <BluetoothControl @toggle-cursor="toggleCursor" />
       </div>
 
       <div class="player">
@@ -59,11 +59,15 @@ export default {
         volume: 0.5,
       },
       devices: Array<Device>(),
+      showCursor: true,
     }
   },
   methods: {
     handleSongChangedBySongControl(song: any) {
       this.song = song;
+    },
+    toggleCursor() {
+      this.showCursor = !this.showCursor;
     },
   },
   created() {
