@@ -42,7 +42,6 @@ import Song from '../components/Song.vue'
 import VolumeControl from '../components/VolumeControl.vue'
 import BluetoothControl from '../components/BluetoothControl.vue'
 import PowerButton from '../components/PowerButton.vue'
-import Space from '../components/Space.vue'
 import { type Device } from '@/helpers/api';
 
 export default {
@@ -107,7 +106,6 @@ export default {
     VolumeControl,
     BluetoothControl,
     PowerButton,
-    Space,
     Devices,
     Nyan,
   },
@@ -118,7 +116,7 @@ export default {
 <style scoped>
 @font-face {
   font-family: 'Press Start 2P';
-  src: url('font/PressStart2P-Regular.ttf');
+  src: url('/fonts/PressStart/PressStart2P-Regular.ttf');
 }
 
 main {
