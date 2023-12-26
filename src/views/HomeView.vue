@@ -79,8 +79,8 @@ export default {
     this.connection.on('dashboard_update', (message: string) => {
       const data = JSON.parse(message);
 
-      this.kmh = data.kmh
-      this.rpm = data.rpm
+      this.kmh = data.kmh;
+      this.rpm = data.rpm;
     });
 
     this.connection.on('player_update', (message: string) => {
@@ -96,7 +96,7 @@ export default {
 	      });
       }
 
-      this.song = songUpdate
+      this.song = songUpdate;
     });
   },
   components: {
@@ -140,7 +140,6 @@ main {
 
 .content {
   width: 100%;
-  border: 1px solid white;
 }
 
 .vehicleInfo {
