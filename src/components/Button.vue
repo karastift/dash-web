@@ -1,5 +1,5 @@
 <template>
-  <button @click="handleClick" :style="{ backgroundColor: color, width: width, height: height, fontSize: fontSize }">{{ title }}</button>
+  <button @click="handleClick" :style="{ backgroundColor: color, width: width, height: height, fontSize: fontSize, transform: pressedDown ? 'scale(0.8)' : undefined, color: pressedDown ? 'red' : undefined }">{{ title }}</button>
 </template>
 
 <script lang="ts">
@@ -13,10 +13,17 @@ export default {
     fontSize: String,
     onClick: Function,
   },
+  data() {
+    return {
+      pressedDown: false,
+    };
+  },
   methods: {
     handleClick() {
       if (this.onClick) {
+        this.pressedDown = true;
         this.onClick();
+        setTimeout(() => this.pressedDown = false, 150);
       }
     },
   },
@@ -34,8 +41,8 @@ button {
   border: none;
   background-color: transparent;
 }
-button:active {
+/* button:active {
   transform: scale(0.8);
   color: red;
-}
+} */
 </style>
