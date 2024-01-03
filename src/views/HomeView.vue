@@ -80,11 +80,16 @@ export default {
 
     if (this.connection === null) return;
 
-    this.connection.on('dashboard_update', (message: string) => {
-      const data = JSON.parse(message);
+    this.connection.on('obd_status', (status: string) => {
+      console.log('OBD:' ,JSON.parse(status).message);
+    });
 
-      this.kmh = data.kmh;
-      this.rpm = data.rpm;
+    this.connection.on('speed', (value: string) => {
+      this.kmh = Number(value);
+    });
+
+    this.connection.on('rpm', (value: string) => {
+      this.rpm = Number(value);
     });
 
     this.connection.on('player_update', (message: string) => {
