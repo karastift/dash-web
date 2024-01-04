@@ -11,7 +11,7 @@ export default {
   name: 'VolumeControl',
   data() {
     return {
-      volume: 50,
+      volume: 100,
     };
   },
   methods: {

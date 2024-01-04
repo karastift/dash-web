@@ -81,7 +81,7 @@ export default {
     if (this.connection === null) return;
 
     this.connection.on('obd_status', (status: string) => {
-      console.log('OBD:' ,JSON.parse(status).message);
+      console.log('OBD:', JSON.parse(status).message);
     });
 
     this.connection.on('speed', (value: string) => {
@@ -133,7 +133,7 @@ main {
   flex-direction: column;
   justify-content: space-between;
   font-family: 'Press Start 2P';
-  font-size: x-small;
+  font-size: medium;
   color: var(--text);
   background-color: var(--background);
 }
